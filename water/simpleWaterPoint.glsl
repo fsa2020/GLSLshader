@@ -1,4 +1,4 @@
-#iChannel0 "file://shaders/textures/123.jpg"
+#iChannel0 "file://textures/123.jpg"
 
 vec2 mouseClickPos(){
     return iMouse.zw/ iResolution.xy;

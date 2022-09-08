@@ -1,4 +1,4 @@
-#iChannel0 "file://shaders/textures/123.jpg"
+#iChannel0 "file://textures/123.jpg"
 
 // refrence BigWIngs https://www.shadertoy.com/view/ltffzl
 #define S(a, b, t) smoothstep(a, b, t)

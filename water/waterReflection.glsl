@@ -1,4 +1,4 @@
-#iChannel0 "file://shaders/textures/123.jpg"
+#iChannel0 "file://textures/123.jpg"
 // #include "//noise/noise.glsl"
 
 vec4 mod289(vec4 x)

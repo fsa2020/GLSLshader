@@ -1,4 +1,4 @@
-#iChannel0 "file://shaders/textures/123.jpg"
+#iChannel0 "file://textures/123.jpg"
 
 vec2 TILE_NUM = vec2(8,2);
 
