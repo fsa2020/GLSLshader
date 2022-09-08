@@ -5,7 +5,7 @@ exmaples
 
 rain on texture
 <p align='center'>
-<img src='textures/sdfCatPhong.jpg' title='images' style='max-width:600px'></img>
+<img src='textures/rain.png' title='images' style='max-width:600px'></img>
 </p>
 
 a cat sdf with phong shading
