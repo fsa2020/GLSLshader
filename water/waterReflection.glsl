@@ -93,5 +93,6 @@ vec2 getReflection(vec2 uv){
 void main() {
     float time = iGlobalTime * 1.0;
     vec2 uv = (gl_FragCoord.xy / iResolution.xy);
+    
     gl_FragColor = texture(iChannel0,uv+getReflection(uv+vec2(0.01*iTime,0.0)));
 }
