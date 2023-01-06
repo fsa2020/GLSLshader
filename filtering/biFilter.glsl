@@ -12,7 +12,16 @@ float GaussFunc2D(float x,float y,float sigma)
     return pow(2.71828,-(x*x+y*y)/(2.0*sigma*sigma))/(3.14159*2.0*sigma*sigma);
 }
 
-vec4 gaussFilter(vec2 uv)
+float GaussFunc(float x,float sigma)
+{
+    return pow(2.71828,-(x*x)/(2.0*sigma*sigma))/(3.14159*2.0*sigma*sigma);
+}
+
+float countGray(vec4 color){
+    return color.r*0.3+color.g*0.59+color.b*0.11;
+}
+
+vec4 biFilter(vec2 uv)
 {
     float sumWeight = 0.0;
     vec4 color = vec4(0,0,0,0);
@@ -26,7 +35,16 @@ vec4 gaussFilter(vec2 uv)
            
             if(p.x>0.0 && p.x<1.0 && p.y>0.0 && p.y<1.0)
             {
-                float w = GaussFunc2D(i*gap,j*gap,0.02);
+                vec2 sigmaScale = mouseFloatPos();
+                float sigma1 = 0.5*sigmaScale.x;
+                float sigma2 = 0.5*sigmaScale.y;
+
+                float w = GaussFunc2D(i*gap,j*gap,sigma1);
+
+                float g1 = countGray(texture(iChannel0,uv));
+                float g2 = countGray(texture(iChannel0,p));
+
+                w *= GaussFunc(g1-g2,sigma2);
                 sumWeight += w;
                 color += w*texture(iChannel0,p);
             }
@@ -40,6 +58,6 @@ vec4 gaussFilter(vec2 uv)
 void main() {
     float time = iGlobalTime * 1.0;
     vec2 uv = (gl_FragCoord.xy / iResolution.xy);
-    vec4 filterColor = gaussFilter(uv);
+    vec4 filterColor = biFilter(uv);
     gl_FragColor =filterColor;
 }
