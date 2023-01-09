@@ -51,6 +51,6 @@ vec4 simple(vec2 uv)
 }
 void main() {
 	vec2 p = (gl_FragCoord.xy * 2. - iResolution.xy) / iResolution.y;
-    vec2 move = vec2(p.x-8.0+mod(5.*iTime,15.0),p.y);
+    vec2 move = vec2(p.x-8.0+mod(8.*iTime,15.0),p.y);
 	gl_FragColor = simple(p+move);
 }
